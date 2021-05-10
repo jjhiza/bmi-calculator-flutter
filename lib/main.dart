@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'theme/custom_theme.dart';
+import 'theme/custom_colors.dart';
 
 void main() => runApp(BMICalculator());
+
+CustomTheme customTheme = CustomTheme();
+CustomColors customColors = CustomColors();
 
 class BMICalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: customTheme.getThemeData(),
       home: InputPage(),
     );
   }
@@ -24,7 +30,14 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Center(
-        child: Text('Body Text'),
+        child: Text(
+          'Body Text',
+          style: TextStyle(
+            color: customColors.primaryTextColor,
+
+            /// TODO: isolate this
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
