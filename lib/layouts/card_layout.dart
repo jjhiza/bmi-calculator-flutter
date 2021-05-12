@@ -7,13 +7,11 @@ class BMICardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: _cardColor,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8),
       ),
     );
   }
-
-  // Color get cardColor => _cardColor;
 }
