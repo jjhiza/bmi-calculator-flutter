@@ -9,4 +9,5 @@ class CustomColors {
   Color bottomBoxHue = Color(0xFF14183B);
   Color sliderAccent = Color(0xFFEC3C66);
   Color primaryTextColor = Color(0xFFE9E9E9);
+  Color fobColor = Color(0xFF33B5E5);
 }
