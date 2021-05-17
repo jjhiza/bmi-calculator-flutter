@@ -3,9 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'layouts/card_layout.dart';
 import 'layouts/card_content.dart';
-import 'gender_card_gesture.dart';
-
-GenderDetector genderDetector = GenderDetector();
+import 'layouts/selector.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -13,6 +11,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Selection selection = Selection();
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,12 +30,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        genderDetector.maleCardColor =
-                            genderDetector.activeCardColor;
+                        selectedGender = Gender.male;
                       });
                     },
                     child: BMICardView(
-                      genderDetector.maleCardColor,
+                      selectedGender == Gender.male
+                          ? activeColor
+                          : inactiveColor,
                       IconContent(FontAwesomeIcons.mars, 'MALE'),
                     ),
                   ),
@@ -44,12 +46,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        genderDetector.femaleCardColor =
-                            genderDetector.activeCardColor;
+                        selectedGender = Gender.female;
                       });
                     },
                     child: BMICardView(
-                      genderDetector.femaleCardColor,
+                      selectedGender == Gender.female
+                          ? activeColor
+                          : inactiveColor,
                       IconContent(FontAwesomeIcons.venus, 'FEMALE'),
                     ),
                   ),
@@ -59,18 +62,18 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             flex: 1,
-            child: BMICardView(genderDetector.inactiveCardColor, null),
+            child: BMICardView(palette.cardHue, null),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: BMICardView(genderDetector.inactiveCardColor, null),
+                  child: BMICardView(palette.cardHue, null),
                 ),
                 Expanded(
                   flex: 1,
-                  child: BMICardView(genderDetector.inactiveCardColor, null),
+                  child: BMICardView(palette.cardHue, null),
                 ),
               ],
             ),
