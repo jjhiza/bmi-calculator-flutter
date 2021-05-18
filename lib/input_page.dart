@@ -13,6 +13,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Selection selection = Selection();
   Gender selectedGender;
+  // GestureDetector gestureDetector = GestureDetector();
 
   @override
   Widget build(BuildContext context) {
@@ -27,34 +28,30 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
+                  child: BMICardView(
+                    cardColor: selectedGender == Gender.male
+                        ? activeColor
+                        : inactiveColor,
+                    cardChild: IconContent(FontAwesomeIcons.mars, 'MALE'),
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
                       });
                     },
-                    child: BMICardView(
-                      selectedGender == Gender.male
-                          ? activeColor
-                          : inactiveColor,
-                      IconContent(FontAwesomeIcons.mars, 'MALE'),
-                    ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
+                  child: BMICardView(
+                    cardColor: selectedGender == Gender.female
+                        ? activeColor
+                        : inactiveColor,
+                    cardChild: IconContent(FontAwesomeIcons.venus, 'FEMALE'),
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
                     },
-                    child: BMICardView(
-                      selectedGender == Gender.female
-                          ? activeColor
-                          : inactiveColor,
-                      IconContent(FontAwesomeIcons.venus, 'FEMALE'),
-                    ),
                   ),
                 ),
               ],
@@ -62,18 +59,30 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             flex: 1,
-            child: BMICardView(palette.cardHue, null),
+            child: BMICardView(
+              cardColor: palette.cardHue,
+              cardChild: null,
+              onPress: () {},
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: BMICardView(palette.cardHue, null),
+                  child: BMICardView(
+                    cardColor: palette.cardHue,
+                    cardChild: null,
+                    onPress: () {},
+                  ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: BMICardView(palette.cardHue, null),
+                  child: BMICardView(
+                    cardColor: palette.cardHue,
+                    cardChild: null,
+                    onPress: () {},
+                  ),
                 ),
               ],
             ),
@@ -84,6 +93,13 @@ class _InputPageState extends State<InputPage> {
               color: palette.sliderAccent,
               minWidth: double.infinity,
               height: 80,
+              child: Text(
+                'CALCULATE',
+                style: TextStyle(
+                  color: palette.primaryTextColor,
+                  fontSize: 25,
+                ),
+              ),
               onPressed: () {},
             ),
           ),
