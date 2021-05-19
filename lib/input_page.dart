@@ -22,6 +22,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -32,7 +33,7 @@ class _InputPageState extends State<InputPage> {
                     cardColor: selectedGender == Gender.male
                         ? activeColor
                         : inactiveColor,
-                    cardChild: IconContent(FontAwesomeIcons.mars, 'MALE'),
+                    cardChild: GenderCardContent(FontAwesomeIcons.mars, 'MALE'),
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
@@ -46,7 +47,8 @@ class _InputPageState extends State<InputPage> {
                     cardColor: selectedGender == Gender.female
                         ? activeColor
                         : inactiveColor,
-                    cardChild: IconContent(FontAwesomeIcons.venus, 'FEMALE'),
+                    cardChild:
+                        GenderCardContent(FontAwesomeIcons.venus, 'FEMALE'),
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
@@ -61,7 +63,7 @@ class _InputPageState extends State<InputPage> {
             flex: 1,
             child: BMICardView(
               cardColor: palette.cardHue,
-              cardChild: null,
+              cardChild: SliderBox('HEIGHT'),
               onPress: () {},
             ),
           ),

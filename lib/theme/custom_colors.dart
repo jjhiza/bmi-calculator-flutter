@@ -6,8 +6,9 @@ class CustomColors {
   Color bgAppBar = Color(0xFF12173A);
   Color cardHue = Color(0xFF272A4C);
   Color selectedCardHue = Color(0xFF3C3F55);
-  // Color bottomCardHue = Color(0xFF14183B);
-  Color sliderAccent = Color(0xFFEC3C66);
+  Color sliderAccent = Color(0xFFEB1555);
+  Color sliderOverlay = Color(0x29EB1555);
+  Color inactiveSlider = Color(0xFF8D8E98);
   Color primaryTextColor = Color(0xFFE9E9E9);
   Color fobColor = Color(0xFF33B5E5);
 }

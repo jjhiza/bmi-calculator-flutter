@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class BMICardView extends StatelessWidget {
   BMICardView({@required this.onPress, this.cardColor, this.cardChild});
+
   final Color cardColor;
   final Widget cardChild;
   final Function onPress;
