@@ -1,9 +1,11 @@
 import 'package:bmi_calculator/theme/custom_theme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'layouts/card_layout.dart';
-import 'layouts/card_content.dart';
+import 'layouts/card_template.dart';
+import 'layouts/gender_card.dart';
 import 'layouts/selector.dart';
+import 'layouts/slider.dart';
+import 'layouts/weight_and_age.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -74,15 +76,33 @@ class _InputPageState extends State<InputPage> {
                   flex: 1,
                   child: BMICardView(
                     cardColor: palette.cardHue,
-                    cardChild: null,
-                    onPress: () {},
+                    cardChild: WeightAndAge(
+                      toggleWeightSizeBox: true,
+                      toggleAgeSizeBox: false,
+                      showWeight: true,
+                      showAge: false,
+                      subText: 'WEIGHT',
+                      showWeightButtons: true,
+                      showAgeButtons: false,
+                    ),
+                    onPress: () {
+                      /// do nothing
+                    },
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: BMICardView(
                     cardColor: palette.cardHue,
-                    cardChild: null,
+                    cardChild: WeightAndAge(
+                      toggleWeightSizeBox: false,
+                      toggleAgeSizeBox: true,
+                      showWeight: false,
+                      showAge: true,
+                      subText: 'AGE',
+                      showWeightButtons: false,
+                      showAgeButtons: true,
+                    ),
                     onPress: () {},
                   ),
                 ),

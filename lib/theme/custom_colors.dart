@@ -10,5 +10,6 @@ class CustomColors {
   Color sliderOverlay = Color(0x29EB1555);
   Color inactiveSlider = Color(0xFF8D8E98);
   Color primaryTextColor = Color(0xFFE9E9E9);
+  Color incrementButtonColor = Color(0x45090E33);
   Color fobColor = Color(0xFF33B5E5);
 }
