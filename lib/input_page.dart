@@ -6,6 +6,7 @@ import 'layouts/gender_card.dart';
 import 'layouts/selector.dart';
 import 'layouts/slider.dart';
 import 'layouts/weight_and_age.dart';
+import 'ResultsPage.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -109,21 +110,25 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 8),
-            child: MaterialButton(
-              color: palette.sliderAccent,
-              minWidth: double.infinity,
-              height: 80,
-              child: Text(
-                'CALCULATE',
-                style: TextStyle(
-                  color: palette.primaryTextColor,
-                  fontSize: 25,
+          GestureDetector(
+            child: Container(
+              child: Center(
+                child: Text(
+                  'CALCULATE',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-              onPressed: () {},
+              margin: EdgeInsets.only(top: 8),
+              color: palette.sliderAccent,
+              width: double.infinity,
+              height: 80,
             ),
+            onTap: () {
+              Navigator.pushNamed(context, '/results');
+            },
           ),
         ],
       ),

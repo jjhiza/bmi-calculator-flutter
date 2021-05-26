@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/ResultsPage.dart';
 import 'package:flutter/material.dart';
 import 'input_page.dart';
 import 'theme/custom_theme.dart';
@@ -11,7 +12,11 @@ class BMICalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: customTheme.getThemeData(),
-      home: InputPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => InputPage(),
+        '/results': (context) => ResultsPage(),
+      },
     );
   }
 }
