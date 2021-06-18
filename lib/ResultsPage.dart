@@ -1,7 +1,5 @@
-import 'package:bmi_calculator/layouts/card_template.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'theme/custom_theme.dart';
 
 class ResultsPage extends StatelessWidget {
   @override

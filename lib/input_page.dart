@@ -6,7 +6,6 @@ import 'layouts/gender_card.dart';
 import 'layouts/selector.dart';
 import 'layouts/slider.dart';
 import 'layouts/weight_and_age.dart';
-import 'ResultsPage.dart';
 
 class InputPage extends StatefulWidget {
   @override
