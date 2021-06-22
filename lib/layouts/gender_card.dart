@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/theme/custom_theme.dart';
 
-class IconContent extends StatelessWidget {
-  IconContent(this.faIcon, this.subText);
+class GenderCardContent extends StatelessWidget {
+  GenderCardContent(this.faIcon, this.subText);
   final String subText;
   final IconData faIcon;
 

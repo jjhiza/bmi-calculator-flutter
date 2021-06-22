@@ -1,11 +1,11 @@
 import 'package:bmi_calculator/theme/custom_theme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'layouts/card_layout.dart';
-import 'layouts/card_content.dart';
-import 'gender_card_gesture.dart';
-
-GenderDetector genderDetector = GenderDetector();
+import 'layouts/card_template.dart';
+import 'layouts/gender_card.dart';
+import 'layouts/selector.dart';
+import 'layouts/slider.dart';
+import 'layouts/weight_and_age.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -13,6 +13,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Selection selection = Selection();
+  Gender selectedGender;
+  // GestureDetector gestureDetector = GestureDetector();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,38 +24,38 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
+                  child: BMICardView(
+                    cardColor: selectedGender == Gender.male
+                        ? activeColor
+                        : inactiveColor,
+                    cardChild: GenderCardContent(FontAwesomeIcons.mars, 'MALE'),
+                    onPress: () {
                       setState(() {
-                        genderDetector.maleCardColor =
-                            genderDetector.activeCardColor;
+                        selectedGender = Gender.male;
                       });
                     },
-                    child: BMICardView(
-                      genderDetector.maleCardColor,
-                      IconContent(FontAwesomeIcons.mars, 'MALE'),
-                    ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: GestureDetector(
-                    onTap: () {
+                  child: BMICardView(
+                    cardColor: selectedGender == Gender.female
+                        ? activeColor
+                        : inactiveColor,
+                    cardChild:
+                        GenderCardContent(FontAwesomeIcons.venus, 'FEMALE'),
+                    onPress: () {
                       setState(() {
-                        genderDetector.femaleCardColor =
-                            genderDetector.activeCardColor;
+                        selectedGender = Gender.female;
                       });
                     },
-                    child: BMICardView(
-                      genderDetector.femaleCardColor,
-                      IconContent(FontAwesomeIcons.venus, 'FEMALE'),
-                    ),
                   ),
                 ),
               ],
@@ -59,30 +63,71 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             flex: 1,
-            child: BMICardView(genderDetector.inactiveCardColor, null),
+            child: BMICardView(
+              cardColor: palette.cardHue,
+              cardChild: SliderBox('HEIGHT'),
+              onPress: () {},
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: BMICardView(genderDetector.inactiveCardColor, null),
+                  child: BMICardView(
+                    cardColor: palette.cardHue,
+                    cardChild: WeightAndAge(
+                      toggleWeightSizeBox: true,
+                      toggleAgeSizeBox: false,
+                      showWeight: true,
+                      showAge: false,
+                      subText: 'WEIGHT',
+                      showWeightButtons: true,
+                      showAgeButtons: false,
+                    ),
+                    onPress: () {
+                      /// do nothing
+                    },
+                  ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: BMICardView(genderDetector.inactiveCardColor, null),
+                  child: BMICardView(
+                    cardColor: palette.cardHue,
+                    cardChild: WeightAndAge(
+                      toggleWeightSizeBox: false,
+                      toggleAgeSizeBox: true,
+                      showWeight: false,
+                      showAge: true,
+                      subText: 'AGE',
+                      showWeightButtons: false,
+                      showAgeButtons: true,
+                    ),
+                    onPress: () {},
+                  ),
                 ),
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 8),
-            child: MaterialButton(
+          GestureDetector(
+            child: Container(
+              child: Center(
+                child: Text(
+                  'CALCULATE',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              margin: EdgeInsets.only(top: 8),
               color: palette.sliderAccent,
-              minWidth: double.infinity,
+              width: double.infinity,
               height: 80,
-              onPressed: () {},
             ),
+            onTap: () {
+              Navigator.pushNamed(context, '/results');
+            },
           ),
         ],
       ),
